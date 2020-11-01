@@ -1,5 +1,7 @@
 {
   "name": "app-tta",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

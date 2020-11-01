@@ -1,0 +1,79 @@
+<ion-header class="user">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Usuario: {{ user }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row class="estatus">
+      <ion-col>
+        <div class="ande-on" *ngIf="status_ande;else ande_off">
+          <img src="assets/images/electricidad-on.png" width="80">
+        </div>
+
+        <ng-template #ande_off>
+          <div class="ande-off">
+            <img src="assets/images/electricidad-off.png" width="80">
+          </div>
+        </ng-template>
+
+        <div class="ande">Ande</div>
+      </ion-col>
+
+      <ion-col>
+        <div class="generador-on" *ngIf="!status_ande && status_generador;else generador_off">
+          <img src="assets/images/generador-on.png" width="70">
+        </div>
+
+        <ng-template #generador_off>
+          <div class="generador-off">
+            <img src="assets/images/generador-off.png" width="70">
+          </div>
+        </ng-template>
+        <div class="generador">Generador</div>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row class="display">
+      <app-display></app-display>
+    </ion-row>
+
+    <ion-row class="buttons">
+      <ion-col size="6" (click)="start()">
+        <div>
+          <app-button [option]="'start'"></app-button>
+          <ion-title class="button-title" name="btn-start">Start</ion-title>
+        </div>
+      </ion-col>
+
+
+      <ion-col size="6" class="ion-text-end" (click)="reset()">
+        <div>
+          <app-button [option]="'reset'"></app-button>
+          <ion-title class="button-title" name="btn-reset">Reset</ion-title>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="select ion-align-items-center">
+      <!-- class="ion-align-self-center" -->
+      <ion-col size="6" size-lg offset="3">
+        <ion-item>
+          <ion-label>Duración</ion-label>
+          <ion-select value="3000" [(ngModel)]="seleccionado">
+            <ion-select-option value="2000">2 Seg</ion-select-option>
+            <ion-select-option value="3000">3 Seg</ion-select-option>
+            <ion-select-option value="5000">5 Seg</ion-select-option>
+            <ion-select-option value="8000">8 Seg</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
