@@ -1,7 +1,8 @@
 {
   "name": "app-tta",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
